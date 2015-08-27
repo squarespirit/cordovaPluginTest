@@ -5,6 +5,19 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('cordovaGeofenceApp', ['ionic'])
 
+.config(function ($stateProvider, $urlRouterProvider) {
+    //Routing
+    $stateProvider
+
+    .state("home", {
+        url: "/home",
+        templateUrl: "app/home/home.html"
+    });
+
+    $urlRouterProvider.otherwise('/home');
+
+})
+
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
