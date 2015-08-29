@@ -12,10 +12,15 @@ angular.module('cordovaGeofenceApp', ['ionic'])
     .state("home", {
         url: "/home",
         templateUrl: "app/home/home.html"
-    });
+    })
 
-    $urlRouterProvider.otherwise('/home');
+    .state("deal", {
+        url: "/deal/:id",
+        templateUrl: "app/deal/deal.html",
+        controller: "DealController"
+    }); 
 
+    $urlRouterProvider.otherwise('/home'); 
 })
 
 .run(function($ionicPlatform) {
