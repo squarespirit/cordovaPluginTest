@@ -33,5 +33,34 @@ angular.module('cordovaGeofenceApp', ['ionic', 'ngCordova'])
         if(window.StatusBar) {
             StatusBar.styleDefault();
         }
+
+        // cordova-plugin-geofence setup
+        if (window.geofence) {
+            window.geofence.initialize();
+            
+            // Create testing geofence
+            window.geofence.addOrUpdate(
+                {
+                    id: "0",
+                    latitude: 41.738846,
+                    longitude: -88.096640,
+                    radius: 200, // meters
+                    transitionType: 3 // both enter and exit
+                    //no notification
+                }
+            ).then(    
+                function () { //success callback
+                    cordova.plugins.notification.local.schedule({
+                        text: "Geofence successfully added"
+                    });
+                },
+                function (reason) { //failure callback
+                    cordova.plugins.notification.local.schedule({
+                        text: "Adding geofence failed, " + reason
+                    });
+                }
+            );
+
+        } //end if (window.geofence)
     });
 })
