@@ -1,13 +1,15 @@
 angular.module('cordovaGeofenceApp')
 .controller('HomeController', 
-    ["$scope", "$ionicPlatform", "$window", function ($scope, $ionicPlatform, $window) {
+    ["$scope", "$ionicPlatform", "$window", "localNotification", function ($scope, $ionicPlatform, $window, localNotification) {
         $scope.testNotification = function () {
             $ionicPlatform.ready(function () {
-                alert("Test notification");
-                cordova.plugins.notification.local.schedule({
-                    id: 1,
-                    title: "cordovaGeofenceApp",
+                alert("localNotification && localNotification.schedule: " + 
+                    (localNotification && localNotification.schedule ? true : false));
+                localNotification.schedule({
+                    //title: "cordovaGeofenceApp",
                     text: "Test notification"
+                }, function (notification) {
+                    alert("Clicked test notification with id " + notification.id);
                 });
             });
         };
