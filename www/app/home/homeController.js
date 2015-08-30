@@ -5,6 +5,8 @@ angular.module('cordovaGeofenceApp')
             $ionicPlatform.ready(function () {
                 alert("Test notification");
                 $cordovaLocalNotification.schedule({
+                    id: 1,
+                    title: "cordovaGeofenceApp",
                     text: "Test notification"
                 });
             });
