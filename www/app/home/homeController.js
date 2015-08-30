@@ -4,7 +4,7 @@ angular.module('cordovaGeofenceApp')
         $scope.testNotification = function () {
             $ionicPlatform.ready(function () {
                 alert("Test notification");
-                $cordovaLocalNotification.schedule({
+                cordova.plugins.notification.local.schedule({
                     id: 1,
                     title: "cordovaGeofenceApp",
                     text: "Test notification"
