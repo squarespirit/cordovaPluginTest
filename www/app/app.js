@@ -11,7 +11,8 @@ angular.module('cordovaGeofenceApp', ['ionic', 'ngCordova'])
 
     .state("home", {
         url: "/home",
-        templateUrl: "app/home/home.html"
+        templateUrl: "app/home/home.html",
+        controller: "HomeController"
     })
 
     .state("deal", {
