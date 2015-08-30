@@ -49,17 +49,6 @@ angular.module('cordovaGeofenceApp', ['ionic', 'ngCordova'])
                     transitionType: 3 // both enter and exit
                     //no notification
                 }
-            ).then(    
-                function () { //success callback
-                    cordova.plugins.notification.local.schedule({
-                        text: "Geofence successfully added"
-                    });
-                },
-                function (reason) { //failure callback
-                    cordova.plugins.notification.local.schedule({
-                        text: "Adding geofence failed, " + reason
-                    });
-                }
             );
 
         } //end if (window.geofence)
