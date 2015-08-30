@@ -1,6 +1,6 @@
 angular.module('cordovaGeofenceApp')
 .controller('HomeController', 
-    function ($scope, $ionicPlatform, $window) {
+    ["$scope", "$ionicPlatform", "$window", function ($scope, $ionicPlatform, $window) {
         $scope.testNotification = function () {
             $ionicPlatform.ready(function () {
                 alert("Test notification");
@@ -37,5 +37,5 @@ angular.module('cordovaGeofenceApp')
                 alert("($window.geofence && $window.geofence.getWatched) was false");
             } 
         }
-    }
+    }]
 );
