@@ -24,7 +24,7 @@ angular.module('cordovaGeofenceApp', ['ionic', 'ngCordova'])
     $urlRouterProvider.otherwise('/home'); 
 }])
 
-.run(["$ionicPlatform", function($ionicPlatform) {
+.run(["$ionicPlatform", "localNotification", function($ionicPlatform, localNotification) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -50,6 +50,14 @@ angular.module('cordovaGeofenceApp', ['ionic', 'ngCordova'])
                     //no notification
                 }
             );
+            
+            window.geofence.onTransitionReceived = function (geofences) {
+                geofences.forEach(function (geofence) {
+                    localNotification.schedule({
+                        text: 'Geofence crossed: id=' + geofence.id + ", tt=" + geofence.transitionType
+                    });
+                });
+            };
         } //end if (window.geofence)
     });
 }]);
