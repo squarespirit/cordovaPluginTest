@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('cordovaGeofenceApp', ['ionic', 'ngCordova'])
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
     //Routing
     $stateProvider
 
@@ -22,9 +22,9 @@ angular.module('cordovaGeofenceApp', ['ionic', 'ngCordova'])
     }); 
 
     $urlRouterProvider.otherwise('/home'); 
-})
+}])
 
-.run(function($ionicPlatform) {
+.run(["$ionicPlatform", function($ionicPlatform) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -50,7 +50,6 @@ angular.module('cordovaGeofenceApp', ['ionic', 'ngCordova'])
                     //no notification
                 }
             );
-
         } //end if (window.geofence)
     });
-})
+}]);
