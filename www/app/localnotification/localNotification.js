@@ -26,7 +26,7 @@ angular.module('cordovaGeofenceApp')
         //If onclick, register the onclick event
         if (onclick) {
             $ionicPlatform.ready(function () {
-                cordova.plugin.notification.local.on("click", 
+                cordova.plugins.notification.local.on("click", 
                     function (someNotification) {
                         /*
                          * someNotification could be any notification, 
